@@ -1,0 +1,48 @@
+used stacks for frontend
+Redux: a predictable state container for js apps . to manage the application state in a predictable manner, making it easier to develop complex applications by maintaining a single source of truth..
+.................................STORE...... ...................................THINK OF THE STORE AS A CONTAINER THAT HOLDS YOUR APPLICATION'S STATE . ITS LIKE A BIG JS OBJECT THAT REPRESENTS THE STATE OF YOUR ENTIRE APPLICATION..
+
+.................................STATE........................................... STATE IS A PLAIN JS OBJECT THAT REPRESENTS THE STATE OF YOUR APPLICATION AT ANY GIVEN MOMENT. IT CONTAINS ALL THE DATA THAT YOUR APPLICATION NEEDS...
+
+..................................ACTIONS::.................................... ACTIONS ARE PAYLOADS OF INFORMATION THAT SEND DATA FROM YOUR APPLICATION TO THE STORE THAY ARE PLAIN JS OBJECTS WITH `type` PROPERTY THAT DESCRIBES THA TYPE OF ACTION BEING PERFORMED.YOU CAN THINK OF ACTIONS AS EVENTS THAT DESCRIBE SOMETHING THAT HAPPENED IN YOUR APPLICATION...
+
+.................................REDUCERS::..................................... REDUCERS SPECIFY HOW THE APPLICATIONS STATE CHANGES IN RESPONSE TO ACTIONS TO SENT TO THE STORE THEY ARE PURE FUNCTIONS THAT TAKE THE CURRENT STATE AND ACTION AND RETURN A NEW STATE. REDUCERS DONT MODIFY THE ORIGINAL STATE INSTEAD THEY RETURN A NEW STATE OBJECT..
+
+.....................................DISPATCH::.................................... ITS A DUNCTION PROVIDED BY THE STORE THAT ALLOWS YOU TO DISPATCH ACTIONS TO CHANGE THE STATE. WHEN YOU DISPATCH AN ACTION REDUX PASSES THAT ACTION TO THE REDUCER AND THE REDUCER CALCULATES THE NEW STATE BASED ON THE ACTION..
+
+......EXAMPLE.....
+
+...ACTION TYPES...
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
+
+....ACTION CREATORS....
+const increment =()=> ({type: INCREMENTE});
+const decrement =()=>({type: DECREMENT});
+
+.....REDUCERS...
+const counterReducer = (state=0,action)=> {
+switch (action.type){
+case INCREMENT:
+return state + 1;
+case DECREMENT:
+return state-1;
+default :
+return state;
+}
+};
+
+...STORE...
+
+const {createStore} = Redux;
+const store = createStore(counterReducer);
+
+...DISPATCH ACTIONS...
+store.dispatch(increment());
+console.log(store.getState());
+
+store.dispatch(decrement());
+console.log(store.getState())
+
+
+TCONTINUE FROM  8:10
